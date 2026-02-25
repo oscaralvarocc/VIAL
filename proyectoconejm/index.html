@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>AIMA Search Simulator - Santa Cruz</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <style>
+        body { margin: 0; background: #0b0e11; color: white; font-family: 'Segoe UI', sans-serif; display: flex; }
+        #sidebar { width: 320px; height: 100vh; background: #15191d; padding: 25px; z-index: 1000; border-right: 1px solid #2d333b; box-sizing: border-box; }
+        #map { flex-grow: 1; height: 100vh; }
+        h2 { color: #46b780; font-size: 1.2em; margin-bottom: 20px; text-transform: uppercase; }
+        label { display: block; margin-top: 15px; font-size: 0.85em; color: #adbac7; }
+        select, input, button { width: 100%; padding: 12px; margin-top: 8px; background: #22272e; border: 1px solid #444c56; color: white; border-radius: 6px; }
+        button#startBtn { background: #46b780; color: #000; border: none; font-weight: bold; cursor: pointer; margin-top: 25px; }
+        .stats { margin-top: 20px; padding: 10px; background: #0b0e11; border-radius: 4px; font-size: 0.9em; border-left: 4px solid #46b780; }
+    </style>
+</head>
+<body>
+    <div id="sidebar">
+        <h2>AIMA Visualizer</h2>
+        <label>Algoritmo (Estrategia)</label>
+        <select id="algo">
+            <option value="astar">A* Search (Óptimo)</option>
+            <option value="ucs">Uniform Cost Search (Dijkstra)</option>
+            <option value="greedy">Greedy Best-First Search</option>
+            <option value="bfs">Breadth-First Search</option>
+            <option value="dfs">Depth-First Search</option>
+        </select>
+
+        <label>Velocidad de simulación</label>
+        <input type="range" id="speed" min="1" max="100" value="85">
+
+        <button id="startBtn">EJECUTAR BÚSQUEDA</button>
+        <button onclick="location.reload()" style="background: #373e47;">RESETEAR MAPA</button>
+
+        <div id="statsPanel" class="stats">
+            Nodos explorados: <span id="nodeCount">0</span><br>
+            Estado: <span id="status">Esperando clics...</span>
+        </div>
+    </div>
+    <div id="map"></div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
